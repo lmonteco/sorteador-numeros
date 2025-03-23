@@ -9,8 +9,17 @@ function sortear() {
 
     for (let i = 0; i < quantidade; i++) {
         numeroAleatorio = gerarNumeroAleatorio(de, ate);
+        
+        while (numerosSorteados.includes(numeroAleatorio)) {
+            console.log('tenho que gerar de novo');            
+            numeroAleatorio = gerarNumeroAleatorio(de, ate);
+        }
+
         numerosSorteados.push(numeroAleatorio);
-    }    
+    }
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${numerosSorteados}</label>`;
+    console.log(numerosSorteados);
 }
 
 function gerarNumeroAleatorio(min, max) {
